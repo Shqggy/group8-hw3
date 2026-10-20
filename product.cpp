@@ -1,13 +1,13 @@
 #include "product.h"
-#include <string>
-#include <sstream>
 #include <iomanip>
+#include <sstream>
+#include <string>
 
 std::string product::product_info() {
-	std::ostringstream info;
-	info << std::fixed << std::setprecision(2) <<
-		name << " ($" << price << "): " << description <<
-		"\n";
+  std::ostringstream info;
+  info << std::fixed << std::setprecision(2) << "Name: " << name << "\n"
+       << "Price: $" << price << "\n"
+       << "Desc: " << description << "\n";
 
-	return info.str();
+  return info.str();
 }
