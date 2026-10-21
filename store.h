@@ -82,6 +82,8 @@ class Store
 	//with this store
 	string transaction_info();
 
+    //returns a string listing all customers associated 
+    //with this store
 	string customer_info();
 
 	//returns a string listing all information about this
