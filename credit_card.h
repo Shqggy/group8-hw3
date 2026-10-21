@@ -11,6 +11,9 @@ struct credit_card
 	double limit;
 	double current_balance;
 
+	//constructor 
+	credit_card(int cc, double lim, double bal);
+
 	//method to make a purchase against the 
 	//credit card limit. returns true if 
 	//successfull and false otherwise. 
