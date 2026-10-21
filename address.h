@@ -16,6 +16,9 @@ struct address
 	string state;
 	string zip;
 
+	//constructor
+	address(string line1, string line2, string city_name, string state_name, string zip_code);
+
 	//prints address information
 	string address_info();		
 };
