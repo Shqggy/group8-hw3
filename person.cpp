@@ -76,6 +76,7 @@ string Person::person_info()
 {
     ostringstream output; 
 
+    output << "Customers: " << "\n";
     output << "Name: " << name_ << "\n";
     output << "Phone: " << phone_ << "\n";
     output << person_address_.address_info() << "\n";
