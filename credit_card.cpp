@@ -51,7 +51,7 @@ std::string credit_card::credit_card_info()
 
 	output << "Credit Card: " << "\n";
 	output << "Credit card number: " << cc_number << "\n";
-	output << "Credit card limit: $" << std::fixed << std::setprecision(2) << limit << "\n";
+	output << "Credit Card Limit: $" << std::fixed << std::setprecision(2) << limit << "\n";
 	output << "Current Balance: $" << std::fixed << std::setprecision(2) << current_balance << "\n";
 
 	return output.str();

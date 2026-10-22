@@ -75,12 +75,10 @@ credit_card Person::person_credit_card()
 string Person::person_info()
 {
     ostringstream output; 
-
-    output << "Customers: " << "\n";
     output << "Name: " << name_ << "\n";
     output << "Phone: " << phone_ << "\n";
     output << person_address_.address_info() << "\n";
-    output << person_credit_card_.credit_card_info() << "\n";
+    output << person_credit_card_.credit_card_info();
 
     return output.str();
 

@@ -139,6 +139,7 @@ std::string Store::transaction_info() {
 
 std::string Store::customer_info() {
     std::stringstream output;
+    std::cout << "Customers: " << std::endl;
     for (int i = 0; i < num_customers(); i++) {
         output << get_customer(i).person_info();
     }
