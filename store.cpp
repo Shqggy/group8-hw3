@@ -1,3 +1,4 @@
+//code for store class here
 #include "store.h"
 #include <string>
 #include <sstream>
@@ -147,11 +148,13 @@ std::string Store::customer_info() {
 std::string Store::store_info() {
     std::stringstream output;
 
-    output << "Transaction Info:\n";
-    output << transaction_info();
+    
 
-    output << "Product Info:\n";
-    output << product_info();
+    output << "Products:\n"; //EDITED TO SAY PRODUCTS
+    output << product_info() << "\n"; //ADDED A NEWLINE
+
+    output << "All transactions:\n"; //EDITED TO SAY ALL TRANSACTIONS
+    output << transaction_info();    // MOVED BELOW TO MATCH OUTPUT ORDER
 
     return output.str();
 }
