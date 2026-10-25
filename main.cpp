@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 
 #include "address.h"
 #include "credit_card.h"
@@ -16,6 +17,7 @@ using std::ifstream;
 using std::ofstream;
 using std::getline;
 using std::string;
+using std::rand;
 
 
 //temp struct for matchin credit cards to people
@@ -174,8 +176,11 @@ int main()
 	for (int i = 0; i < num_people; i++)
 	{
 		store1.add_customer(people[i]);
-		store1.add_product(products[i]);
 	}
+    for (int i = 0; i < num_products; i++) 
+    {
+        store1.add_product(products[i]);
+    }
 
 
 	//print store info after you finish importing info
@@ -185,8 +190,36 @@ int main()
 	cout << store1.store_info() << endl << endl;
 
 	//make random number of random transactions
+    srand(time(0));
+
+    int num_transactions = 11 + rand() % 89;
+
+    for (int t = 0; t < num_transactions; t++)
+    {
+        int cust_idx = rand() % num_people;
+        int prod_idx = rand() % num_products;
+        int quantity = 1 + rand() % 5;
+
+        Person& customer = people[cust_idx];
+        product& item = products[prod_idx];
+
+        if (store1.make_purchase(customer, item, quantity))
+        {
+            cout << "Successfull transaction!" << endl;
+            cout << "Transaction Details: " << endl;
+            cout << store1.get_transaction(store1.num_transactions() - 1).transaction_info() << endl;
+        }
+        else {
+            cout << "Unsuccessfull transaction!" << endl;
+            cout << "Transaction Details: " << endl;
+            cout << "Person:\n" << customer.person_info();
+		    cout << "Product:\n" << item.product_info();
+		    cout << "Purchase Quantity: " << quantity << endl << endl;
+        }
+    }
 
 	//print store info at the end
 	cout << "Store info: " << endl << endl;
+    cout << store1.customer_info() << endl;
 	cout << store1.store_info() << endl << endl;
 }

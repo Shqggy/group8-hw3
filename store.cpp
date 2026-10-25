@@ -91,14 +91,12 @@ transaction Store::get_transaction(int index) {
 
 bool Store::make_purchase(Person customer, product item, int amount) {
     credit_card card = customer.person_credit_card();
-    if (card.current_balance < item.price * amount) {
+    if (card.current_balance + (item.price * amount) > card.limit) {
         // card declined, customer cannot afford the item(s)
-        std::cout << "Unsuccessful transaction.";
         return false;
     } else {
-        // purchase successful, charge the balence
-        std::cout << "Successful transaction!";
-        card.current_balance -= item.price * amount;
+        // purchase successful, add to balence
+        card.current_balance += item.price * amount;
         customer.person_credit_card(card);
     }
 
@@ -118,7 +116,6 @@ bool Store::make_purchase(Person customer, product item, int amount) {
     current_transaction.quantity = amount;
 
     add_transaction(current_transaction);
-    std::cout << current_transaction.transaction_info();
 
     return true;
 }
@@ -150,8 +147,6 @@ std::string Store::customer_info() {
 
 std::string Store::store_info() {
     std::stringstream output;
-
-    
 
     output << "Products:\n"; //EDITED TO SAY PRODUCTS
     output << product_info() << "\n"; //ADDED A NEWLINE
