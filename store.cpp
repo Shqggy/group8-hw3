@@ -118,6 +118,8 @@ bool Store::make_purchase(Person customer, product item, int amount) {
     current_transaction.quantity = amount;
 
     add_transaction(current_transaction);
+    std::cout << current_transaction.transaction_info();
+
     return true;
 }
 
