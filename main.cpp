@@ -200,17 +200,17 @@ int main()
         int prod_idx = rand() % num_products;
         int quantity = 1 + rand() % 5;
 
-        Person& customer = people[cust_idx];
-        product& item = products[prod_idx];
+        Person customer = store1.get_customer(cust_idx); //CHANGED TO FIX BALANCE RESET ISSUE: ORIGINAL: Person& customer = people[cust_idx];
+        product& item = products[prod_idx];              // was an issue with using copies
 
         if (store1.make_purchase(customer, item, quantity))
         {
-            cout << "Successfull transaction!" << endl;
+            cout << "Successful transaction!" << endl;
             cout << "Transaction Details: " << endl;
             cout << store1.get_transaction(store1.num_transactions() - 1).transaction_info() << endl;
         }
         else {
-            cout << "Unsuccessfull transaction!" << endl;
+            cout << "Unsuccessful transaction!" << endl;
             cout << "Transaction Details: " << endl;
             cout << "Person:\n" << customer.person_info();
 		    cout << "Product:\n" << item.product_info();
